@@ -5,7 +5,7 @@
  * kv 固定只读取第一张；其余三类每次各随机读取一张。
  */
 window.AIER_IMAGES = {
-  kv: ["./images/kv/main-kv.svg"],
+  kv: ["./images/kv/main-kv.jpg"],
   sign: [
     "./images/sign/sign-01.svg",
     "./images/sign/sign-02.svg",

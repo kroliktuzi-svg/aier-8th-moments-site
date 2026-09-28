@@ -6,6 +6,11 @@
   const refreshButton = document.getElementById("refreshButton");
   const gallery = document.getElementById("gallery");
   const toast = document.getElementById("toast");
+  const saveSheet = document.getElementById("saveSheet");
+  const saveSheetBackdrop = document.getElementById("saveSheetBackdrop");
+  const saveSheetClose = document.getElementById("saveSheetClose");
+  const savePreview = document.getElementById("savePreview");
+  const saveSheetTitle = document.getElementById("saveSheetTitle");
 
   const labels = ["固定主KV", "抽签活动图", "转盘活动图", "现场活动图"];
   let currentCopy = "";
@@ -59,15 +64,65 @@
     gallery.innerHTML = images.map(function (src, index) {
       const eager = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       return (
-        '<figure class="image-card">' +
-          '<a href="' + src + '" target="_blank" rel="noopener" aria-label="查看第' + (index + 1) + '张原图">' +
+        '<figure class="image-card' + (index === 0 ? ' image-card--kv' : '') + '">' +
+          '<div class="image-media">' +
             '<img src="' + src + '" alt="' + labels[index] + '" ' + eager + ' draggable="false" />' +
             '<span class="image-index" aria-hidden="true">' + (index + 1) + '</span>' +
-          '</a>' +
+          '</div>' +
           '<figcaption>' + labels[index] + '</figcaption>' +
+          '<button class="image-save-button" type="button" data-src="' + src + '" data-index="' + index + '">' +
+            '<span aria-hidden="true">↓</span> 保存第' + (index + 1) + '张' +
+          '</button>' +
         '</figure>'
       );
     }).join("");
+  }
+
+  function fileExtension(src) {
+    const clean = src.split("?")[0].split("#")[0];
+    const match = clean.match(/\.([a-zA-Z0-9]+)$/);
+    return match ? match[1].toLowerCase() : "jpg";
+  }
+
+  function openSaveSheet(src, index) {
+    savePreview.src = src;
+    savePreview.alt = labels[index];
+    saveSheetTitle.textContent = "长按保存第" + (index + 1) + "张图片";
+    saveSheet.hidden = false;
+    document.body.classList.add("save-sheet-open");
+    saveSheetClose.focus();
+  }
+
+  function closeSaveSheet() {
+    saveSheet.hidden = true;
+    savePreview.removeAttribute("src");
+    document.body.classList.remove("save-sheet-open");
+  }
+
+  async function saveImage(src, index) {
+    const userAgent = navigator.userAgent || "";
+    const needsLongPress = /MicroMessenger|iPhone|iPad|iPod/i.test(userAgent);
+    if (needsLongPress) {
+      openSaveSheet(src, index);
+      return;
+    }
+
+    try {
+      const response = await fetch(src, { cache: "force-cache" });
+      if (!response.ok) throw new Error("image fetch failed");
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "aier-8th-" + (index + 1) + "." + fileExtension(src);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      showToast("已开始保存第" + (index + 1) + "张图片");
+    } catch (error) {
+      openSaveSheet(src, index);
+    }
   }
 
   async function copyCurrentText() {
@@ -99,6 +154,16 @@
   }
 
   copyButton.addEventListener("click", copyCurrentText);
+  gallery.addEventListener("click", function (event) {
+    const button = event.target.closest(".image-save-button");
+    if (!button) return;
+    saveImage(button.dataset.src, Number(button.dataset.index));
+  });
+  saveSheetClose.addEventListener("click", closeSaveSheet);
+  saveSheetBackdrop.addEventListener("click", closeSaveSheet);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !saveSheet.hidden) closeSaveSheet();
+  });
   refreshButton.addEventListener("click", function () {
     refreshButton.classList.remove("is-spinning");
     void refreshButton.offsetWidth;

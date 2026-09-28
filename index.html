@@ -15,7 +15,7 @@
       <header class="hero">
         <div class="hero__badge">HAPPY 8TH BIRTHDAY</div>
         <h1>你的8周年朋友圈<br />已生成</h1>
-        <p>复制文案，再长按保存4张图片</p>
+        <p>复制文案，再点击按钮保存4张图片</p>
       </header>
 
       <section class="copy-card" aria-labelledby="copy-title">
@@ -30,7 +30,7 @@
       <section class="gallery-section" aria-labelledby="gallery-title">
         <div class="gallery-heading">
           <div class="section-label" id="gallery-title"><span>02</span> 配图素材</div>
-          <p>按顺序保存 · 长按图片即可</p>
+          <p>按顺序点击按钮保存</p>
         </div>
         <div class="gallery" id="gallery"></div>
       </section>
@@ -43,6 +43,20 @@
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite">复制成功</div>
+
+    <div class="save-sheet" id="saveSheet" hidden role="dialog" aria-modal="true" aria-labelledby="saveSheetTitle">
+      <button class="save-sheet__backdrop" id="saveSheetBackdrop" type="button" aria-label="关闭保存图片提示"></button>
+      <div class="save-sheet__panel">
+        <div class="save-sheet__heading">
+          <div>
+            <h2 id="saveSheetTitle">长按图片保存</h2>
+            <p>长按下方原图，选择“保存图片”</p>
+          </div>
+          <button class="save-sheet__close" id="saveSheetClose" type="button">关闭</button>
+        </div>
+        <img id="savePreview" alt="待保存的朋友圈图片" />
+      </div>
+    </div>
 
     <script src="./data/copywriting.js"></script>
     <script src="./data/images.js"></script>
