@@ -28,6 +28,8 @@ window.AIER_IMAGES = {
     "./images/event/event-02.jpg",
     "./images/event/event-03.jpg",
     "./images/event/event-04.jpg",
-    "./images/event/event-05.jpg"
+    "./images/event/event-05.jpg",
+    "./images/event/event-06.jpg",
+    "./images/event/event-07.jpg"
   ]
 };
