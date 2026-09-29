@@ -7,14 +7,21 @@
 window.AIER_IMAGES = {
   kv: ["./images/kv/main-kv.jpg"],
   sign: [
-    "./images/sign/sign-01.svg",
-    "./images/sign/sign-02.svg",
-    "./images/sign/sign-03.svg"
+    "./images/sign/sign-01.jpg",
+    "./images/sign/sign-02.jpg",
+    "./images/sign/sign-03.jpg",
+    "./images/sign/sign-04.jpg",
+    "./images/sign/sign-05.jpg",
+    "./images/sign/sign-06.jpg",
+    "./images/sign/sign-07.jpg",
+    "./images/sign/sign-08.jpg",
+    "./images/sign/sign-09.jpg",
+    "./images/sign/sign-10.jpg"
   ],
   wheel: [
-    "./images/wheel/wheel-01.svg",
-    "./images/wheel/wheel-02.svg",
-    "./images/wheel/wheel-03.svg"
+    "./images/wheel/wheel-01.jpg",
+    "./images/wheel/wheel-02.jpg",
+    "./images/wheel/wheel-03.jpg"
   ],
   event: [
     "./images/event/event-01.svg",
