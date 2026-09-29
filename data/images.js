@@ -29,7 +29,9 @@ window.AIER_IMAGES = {
     "./images/wheel/wheel-08.jpg",
     "./images/wheel/wheel-09.jpg",
     "./images/wheel/wheel-10.jpg",
-    "./images/wheel/wheel-11.jpg"
+    "./images/wheel/wheel-11.jpg",
+    "./images/wheel/wheel-12.jpg",
+    "./images/wheel/wheel-13.jpg"
   ],
   event: [
     "./images/event/event-01.jpg",
@@ -38,6 +40,9 @@ window.AIER_IMAGES = {
     "./images/event/event-04.jpg",
     "./images/event/event-05.jpg",
     "./images/event/event-06.jpg",
-    "./images/event/event-07.jpg"
+    "./images/event/event-07.jpg",
+    "./images/event/event-08.jpg",
+    "./images/event/event-09.jpg",
+    "./images/event/event-10.jpg"
   ]
 };
