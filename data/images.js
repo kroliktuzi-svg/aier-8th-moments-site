@@ -21,7 +21,15 @@ window.AIER_IMAGES = {
   wheel: [
     "./images/wheel/wheel-01.jpg",
     "./images/wheel/wheel-02.jpg",
-    "./images/wheel/wheel-03.jpg"
+    "./images/wheel/wheel-03.jpg",
+    "./images/wheel/wheel-04.jpg",
+    "./images/wheel/wheel-05.jpg",
+    "./images/wheel/wheel-06.jpg",
+    "./images/wheel/wheel-07.jpg",
+    "./images/wheel/wheel-08.jpg",
+    "./images/wheel/wheel-09.jpg",
+    "./images/wheel/wheel-10.jpg",
+    "./images/wheel/wheel-11.jpg"
   ],
   event: [
     "./images/event/event-01.jpg",
