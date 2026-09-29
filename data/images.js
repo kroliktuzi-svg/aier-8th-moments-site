@@ -24,8 +24,10 @@ window.AIER_IMAGES = {
     "./images/wheel/wheel-03.jpg"
   ],
   event: [
-    "./images/event/event-01.svg",
-    "./images/event/event-02.svg",
-    "./images/event/event-03.svg"
+    "./images/event/event-01.jpg",
+    "./images/event/event-02.jpg",
+    "./images/event/event-03.jpg",
+    "./images/event/event-04.jpg",
+    "./images/event/event-05.jpg"
   ]
 };
